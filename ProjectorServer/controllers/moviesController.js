@@ -3,7 +3,29 @@ var movies = require("./movieData"),
   STATUS_CODE = require("../constants/statusCodes").STATUS_CODE;
 
 exports.getAllMovies = function(req, res, next) {
-  return res.json(movies);
+  try {
+    var movieModel = model.Movie;
+    movieModel
+      .find()
+      .exec()
+      .then(resp => {
+        res.json({
+          isSuccess: true,
+          data: resp
+        });
+      })
+      .catch(err => {
+        res.json({
+          isSuccess: false,
+          error: STATUS_CODE.SERVER_ERROR
+        });
+      });
+  } catch (err) {
+    res.json({
+      isSuccess: false,
+      error: STATUS_CODE.SERVER_ERROR
+    });
+  }
 };
 
 exports.addNewMovie = function(req, res, next) {
@@ -18,32 +40,58 @@ exports.addNewMovie = function(req, res, next) {
       error: STATUS_CODE.INSUFFICIENT_PARAMS
     });
   }
-
-  new_movie
-    .save()
-    .then(save_data => {
-      return res.json({
-        isSuccess: true,
-        data: save_data
-      });
-    })
-    .catch(err => {
-      return res.json({
-        isSuccess: false,
-        error: STATUS_CODE.DB_ERROR
-      });
-    });
-  } catch(err) {
-      res.json({
+    
+    new_movie
+      .save()
+      .then(save_data => {
+        return res.json({
+          isSuccess: true,
+          data: save_data
+        });
+      })
+      .catch(err => {
+        return res.json({
           isSuccess: false,
-          error: STATUS_CODE.SERVER_ERROR
+          error: STATUS_CODE.DB_ERROR
+        });
       });
+  } catch (err) {
+    res.json({
+      isSuccess: false,
+      error: STATUS_CODE.SERVER_ERROR
+    });
   }
 };
 
 exports.getMovieDetails = function(req, res, next) {
-  console.log(req.params.movieName);
-  return res.json({
-    isSuccess: true
-  });
+  try {
+    var movieModel = model.Movie;
+    movieModel
+      .find({ name: req.params.movieName })
+      .exec()
+      .then(resp => {
+        if (resp.length > 0) {
+          res.json({
+            isSuccess: true,
+            data: resp[0]
+          });
+        } else {
+          res.json({
+            isSuccess: false,
+            error: STATUS_CODE.MOVIE_NOT_FOUND
+          });
+        }
+      })
+      .catch(err => {
+        res.json({
+          isSuccess: false,
+          error: STATUS_CODE.SERVER_ERROR
+        });
+      });
+  } catch (err) {
+    res.json({
+      isSuccess: false,
+      error: STATUS_CODE.SERVER_ERROR
+    });
+  }
 };
