@@ -1,0 +1,172 @@
+/* COMMON CSS start */
+.container {
+  background-color: #442D4B;
+  color: #ffffff;
+}
+
+.fright {
+  float: right;
+}
+
+.fleft {
+  float: left;
+}
+
+.clearfix:after, .clearfix:before, .clearfix {
+  clear: both;
+  content: '';
+}
+
+header, footer {
+  padding: 40px;
+  min-height: 40px;
+}
+/* COMMON CSS end */
+
+/* HEADER CSS start */
+header .logo {
+  width: 200px;
+}
+
+header ul {
+  list-style-type: none;
+}
+
+header ul li {
+  display: inline-block;
+  padding: 10px 15px;
+}
+
+header ul li a {
+  color: #ffcb59;
+  text-decoration: none;
+}
+/* HEADER CSS end */
+
+/* CONTENT CSS start */
+
+.movie-description .content {
+  margin: 50px;
+}
+
+.goBackLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  vertical-align: super;
+}
+
+#goBackImg {
+  width: 30px;
+  margin-right: 5px;
+}
+
+#movie-title {
+  font-size: 5rem;
+}
+
+.stars .star {
+  width: 20px;
+  height: 20px;
+  margin: 10px auto;
+  display: inline-block;
+  background-position: center;
+  background-size: contain;
+}
+
+.star-full {
+  background-image: url("../img/star.png");
+}
+
+.star-half {
+  background-image: url("../img/star-half.png");
+}
+
+.star-empty {
+  background-image: url("../img/star-empty.png");
+}
+
+.movie-img {
+  height: 600px;
+  margin: 10px 0px;
+  background-image: url("../img/movie.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#movie-type {
+  margin: 50px;
+  font-size: 2.2rem;
+}
+
+.movie-desc {
+  display: flex;
+}
+
+.movie-desc .detail-block:nth-child(1) {
+  flex: 3;
+  margin: 10px 25px 10px 0px;
+}
+
+.movie-desc .detail-block:nth-child(2) {
+  flex: 1;
+  margin: 10px 0px 10px 50px;
+}
+
+.detail-block span {
+  color: #f7e51e;
+  font-size: 1.6rem;
+}
+
+.detail-block .plot-block {
+  text-align: justify;
+}
+
+.detail-block ul, p {
+  margin: 15px 0;
+}
+
+.detail-block ul li {
+  display: block;
+}
+/* CONTENT CSS end */
+
+/* FOOTER CSS start */
+
+
+footer {
+  bottom: 0;
+  background-color: #000000;
+  padding: 20px 40px;
+}
+
+.link {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 5px;
+  display: inline-block;
+}
+
+.link.facebook {
+  background-image: url('../img/facebook.png');
+}
+
+.link.twitter {
+  background-image: url('../img/twitter.png');
+}
+
+.link.insta {
+  background-image: url('../img/instagram.png');
+}
+
+footer .logo {
+  width: 200px;
+}
+
+/* FOOTER CSS end */
