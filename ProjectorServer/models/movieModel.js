@@ -4,18 +4,39 @@ var Schema = mongoose.Schema;
 
 // Create a Schema
 var MovieSchema = new Schema({
-  name: String,
-  releaseYear: Number,
+  name: {
+    type: String,
+    required: true
+  },
+  releaseYear: {
+    type: Number,
+    required: true
+  },
   language: {
     type: String,
     enum: ["english", "tamil"],
-    default: "english",
+    required: true
   },
-  rating: Number,
-  thumbnailUrl: String,
-  posterUrl: String,
-  plot: String,
-  cast: String
+  rating: {
+    type: Number,
+    required: true
+  },
+  thumbnailUrl: {
+    type: String,
+    required: true
+  },
+  posterUrl: {
+    type: String,
+    required: true
+  },
+  plot: {
+    type: String,
+    required: true
+  },
+  cast: {
+    type: String,
+    required: true
+  }
 });
 
 exports.Movie = mongoose.model("Movie", MovieSchema);
