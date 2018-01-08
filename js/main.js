@@ -1,0 +1,49 @@
+$( document ).ready(function() {
+    $.ajax({ 
+        type: "GET",
+        dataType: "json",
+        url: "https://api.myjson.com/bins/m5r75",
+        success: function(response){   
+            if(response){
+                constructDOM(response)
+            }
+        }
+     });
+
+     function constructDOM(data){
+        let content = [];
+        for(let i = 0; i < data.length; i++) {
+            let categoryContent = []                   
+            let categoryDOM = $('<div class="clearfix category"></div>');
+            let categoryTitle = $('<h3 class="categoryName">'+data[i].category+'</h3>');
+            categoryContent.push(categoryTitle);
+
+            if(data){            
+                let moviesList = data[i].movies;                        
+                for(let j = 0; j < moviesList.length; j++) {
+                    let movieDOM = 
+                    '<div class="movie fleft">'+
+                        '<div class="poster">'+
+                            '<img src="'+moviesList[j].image+'" alt="">'+
+                        '</div>'+
+                        '<div class="details">'+
+                            '<p class="yearOfRelease">'+moviesList[j].yearOfRelease+'</p>'+
+                            '<h4 class="name">'+moviesList[j].name+'</h4>'+
+                            '<div class="stars">'+
+                            '<div class="star star-full"></div>'+
+                            '<div class="star star-full"></div>'+
+                            '<div class="star star-full"></div>'+
+                            '<div class="star star-full"></div>'+
+                            '<div class="star star-half"></div>';
+                            '</div>'+                                               
+                            '</div>'+
+                        '</div>';
+                    categoryContent.push($(movieDOM));   
+                }
+                categoryDOM.html(categoryContent);
+                content.push(categoryDOM);
+            }    
+        }
+        $('section.content').html(content);
+     }
+});
