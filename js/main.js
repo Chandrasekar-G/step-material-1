@@ -1,16 +1,36 @@
-$( document ).ready(function() {
+$(document).ready(function() {
     $.ajax({ 
         type: "GET",
         dataType: "json",
-        url: "https://api.myjson.com/bins/m5r75",
+        url: "https://api.myjson.com/bins/tls49",
         success: function(response){   
             if(response){
-                constructDOM(response)
+                constructDOM(formObject(response));
             }
         }
      });
 
-     function constructDOM(data){
+    function  formObject(response) {
+        let flags = [], categoryObject = [], length = response.length, i;
+        for( i=0; i<length; i++) {
+            let index = flags.indexOf(response[i].language);
+            if(index>=0) {
+                categoryObject[index].movies.push(response[i]);
+                continue;
+            }
+
+            flags.push(response[i].language);
+            let objectSchema = {
+                category: response[i].language,
+                movies: []
+            }
+            objectSchema.movies.push(response[i]);
+            categoryObject.push(objectSchema);            
+        }      
+        return categoryObject;
+    }
+
+    function constructDOM(data){
         let content = [];
         for(let i = 0; i < data.length; i++) {
             let categoryContent = []                   
@@ -45,5 +65,5 @@ $( document ).ready(function() {
             }    
         }
         $('section.content').html(content);
-     }
+    }
 });
