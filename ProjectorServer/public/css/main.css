@@ -1,0 +1,180 @@
+
+/* COMMON STYLES*/
+    body, html {
+        margin: 0; padding: 0;
+    }
+    * {
+        box-sizing: border-box;
+    }
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+    .clearfix:before,
+    .clearfix:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .container {
+        background-color: #442D4B;
+        color: #ffffff;
+        font-family: 'Lato', sans-serif;
+    }
+
+    header, section, footer{
+        padding: 40px;
+        min-height: 40px;    
+    }
+
+    .fright {
+        float: right;
+    }
+
+    .fleft {
+        float: left;
+    }  
+
+/* HEADER SECTION */
+    header .logo {
+        width: 200px;
+        margin: 16px 0;
+    }
+
+    header ul {
+        list-style-type: none;
+    }
+
+    header ul li {
+        display: inline-block;
+        padding: 10px 15px;
+    }
+
+    header ul li a {
+        color: #ffcb59;
+        text-decoration: none;
+        font-size: .8rem;
+    }
+
+/* CONTENT SECTION */ 
+    section{
+        padding: 0 40px;
+        padding-bottom: 84px;
+    }
+    .category{
+        margin-bottom: 40px;
+    }
+    .categoryName {
+        font-size: 1.8rem;    
+        font-weight: 100;
+        margin-top: 0;
+        margin-bottom: 20px;  
+    }
+
+    .movie {
+        margin-bottom: 10px;
+        width: 20%;
+    }
+
+    .movie .poster {
+        width: 180px;
+        height: 230px;
+        overflow: hidden;    
+        /* margin: 0 auto; */
+        margin-bottom: 15px;
+    }    
+    
+    .poster img{
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+    }
+    .details {
+        width: 180px;    
+        /* margin: 0 auto; */
+    }
+    .details .yearOfRelease {
+        margin: 5px 0;
+        font-size: 0.8rem;
+    }
+
+    .details .name{
+        margin: 5px 0;
+        font-weight: 100;
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+
+    .stars .star {
+        width: 15px;
+        height: 15px;
+        margin: 0;
+        display: inline-block;
+        background-position: center;
+        background-size: contain;
+    }
+          
+    .star-full {
+        background-image: url("../images/star-full.png");
+    }
+      
+    .star-half {
+        background-image: url("../images/star-half.png");
+    }
+    
+    .star-empty {
+        background-image: url("../images/star-empty.png");
+    }    
+
+/* FOOTER SECTION */
+    
+    .link {
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin: 5px;
+        display: inline-block;
+    }
+
+    footer {
+        background-color: #000000;
+        padding: 20px 0;
+        position: absolute;
+        /* bottom: 0; */
+        width: 100%;
+    }
+    .link-grp {
+        margin-left: 40px;
+    }
+    .link.facebook {
+        background-image: url('../images/facebook.png');
+    }
+
+    .link.twitter {
+        background-image: url('../images/twitter.png');
+    }
+
+    .link.insta {
+        background-image: url('../images/instagram.png');
+    }
+
+    footer .logo {
+        width: 200px;
+        margin-right: 40px;
+    }
