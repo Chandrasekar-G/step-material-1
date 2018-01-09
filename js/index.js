@@ -1,12 +1,12 @@
-
-// function getMovieDetails() {
+(function(){
   $.ajax({
     url: "https://api.myjson.com/bins/1g0utf",
     success: function(result) {
       console.log('success  : ' , result)
       let movie=result[1];
       $('#movie-title').text(movie.name);
-      $('.movie-img img').attr('src',movie.posterUrl);
+      console.log($('.movie-img'))
+      $('.movie-img').css('background-image',`url(${movie.posterUrl})`);
       $('#movie-type').text(movie.releaseYear + " " +movie.language);
       $('.plot-block').text(movie.plot);
       let cast=movie.cast.split(",");
@@ -19,4 +19,4 @@
       window.alert('Some error occurred');
     }
   });
-// }
+})();
