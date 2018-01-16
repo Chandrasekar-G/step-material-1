@@ -1,7 +1,7 @@
 (function(){
   var movieName = window.location.href.split("#")[1];
   $.ajax({
-    url: "http://localhost:3000/movies/"+movieName,
+    url: "/movies/"+movieName,
     success: function(result) {
       console.log('success  : ' , result)
       let movie=result.data;

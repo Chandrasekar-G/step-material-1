@@ -4,7 +4,7 @@ $(function() {
         console.log("hiiii");
         console.log($("#add_movie_form").serialize());
         $.ajax({
-                url: "http://localhost:3000/movies/add",
+                url: "/movies/add",
                 type: 'post',
                 dataType: 'application/json',
                 data: $("#add_movie_form").serialize(),

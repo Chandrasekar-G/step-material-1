@@ -2,7 +2,7 @@ $(document).ready(function() {
     $.ajax({ 
         type: "GET",
         dataType: "json",
-        url: "http://localhost:3000/movies/all",
+        url: "/movies/all",
         success: function(response){   
             if(response){
                constructDOM(formObject(response.data));
