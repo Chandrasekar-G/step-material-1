@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var db = mongoose.connection;
 
 exports.createConnection = function() {
-  mongoose.connect("mongodb://localhost/projector");
+  mongoose.connect("mongodb://sirius:password@ds257627.mlab.com:57627/step-projector-app");
 };
 
 db.on("error", function() {
