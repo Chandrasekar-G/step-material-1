@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    $.ajax({ 
+    $.ajax({
         type: "GET",
         dataType: "json",
         url: "/movies/all",
-        success: function(response){   
+        success: function(response){
             if(response){
                constructDOM(formObject(response.data));
             }
@@ -25,25 +25,25 @@ $(document).ready(function() {
                 movies: []
             }
             objectSchema.movies.push(response[i]);
-            categoryObject.push(objectSchema);            
-        }      
+            categoryObject.push(objectSchema);
+        }
         return categoryObject;
     }
 
     function constructDOM(data){
         let content = [];
         for(let i = 0; i < data.length; i++) {
-            let categoryContent = []                   
+            let categoryContent = []
             let categoryDOM = $('<div class="clearfix category"></div>');
             let categoryTitle = $('<h3 class="categoryName">'+data[i].category+'</h3>');
             categoryContent.push(categoryTitle);
 
-            if(data){            
-                let moviesList = data[i].movies;                        
+            if(data){
+                let moviesList = data[i].movies;
                 for(let j = 0; j < moviesList.length; j++) {
-                    let movieDOM = 
+                    let movieDOM =
                     '<div class="movie fleft">'+
-                        '<a href="http://localhost:3000/movieDetail.html#'+moviesList[j].name+'">' +
+                        '<a href="/movieDetail.html#'+moviesList[j].name+'">' +
                         '<div class="poster">'+
                             '<img src="'+moviesList[j].thumbnailUrl+'" alt="">'+
                         '</div></a>'+
@@ -52,11 +52,11 @@ $(document).ready(function() {
                             '<h4 class="name">'+moviesList[j].name+'</h4>'+
                             '<div class="stars">';
                     movieDOM+=setRating(moviesList[j]);
-                    categoryContent.push($(movieDOM));   
+                    categoryContent.push($(movieDOM));
                 }
                 categoryDOM.html(categoryContent);
                 content.push(categoryDOM);
-            }    
+            }
         }
         $('section.content').html(content);
     }
@@ -67,7 +67,7 @@ $(document).ready(function() {
 
         if(movie.rating){
             let rating = parseFloat(movie.rating);
-            isDecimal = ((rating%1) != 0) ? true : false; 
+            isDecimal = ((rating%1) != 0) ? true : false;
             let roundedRating = Math.floor(rating);
 
             for(let i = 1; i <=5; i++) {
@@ -84,14 +84,14 @@ $(document).ready(function() {
                         }
                     } else if(i>roundedRating && !isDecimal){
                         reatingWidget+= '<div class="star star-empty"></div>';
-                    }                    
+                    }
                 }
             }
         }
         reatingWidget +
-                '</div>'+                                               
+                '</div>'+
             '</div>'+
-        '</div>'; 
+        '</div>';
 
         return reatingWidget;
     }
